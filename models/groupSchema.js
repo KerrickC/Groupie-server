@@ -9,6 +9,11 @@ const groupmodel = new Schema({
     required: true,
     unique: true,
   },
+  groupTopic: {
+    type: String,
+    required: true,
+    unique: false,
+  },
   groupID: {
     type: String,
     required: true,
