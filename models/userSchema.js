@@ -9,6 +9,11 @@ const usermodel = new Schema({
     required: true,
     unique: true,
   },
+  profileImage: {
+    type: String,
+    required: true,
+    unique: false,
+  },
   ownedGroups: {
     type: Array,
     required: true,
