@@ -15,11 +15,11 @@ app.get("/getAllGroups", async (req, res) => {
   }
 });
 
-app.prependOnceListener("/addGroup", async (req, res) => {
+app.post("/addGroup", async (req, res) => {
   try {
-    newGroup = new Group(res.body);
+    // newGroup = new Group(res.body);
 
-    const data = await insertOne(newGroup);
+    const data = await insertOne(Group, req.body);
     console.log(data);
 
     return res.send(data);
