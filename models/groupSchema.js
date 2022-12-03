@@ -29,6 +29,11 @@ const groupmodel = new Schema({
     required: true,
     unique: false,
   },
+  location: {
+    type: String,
+    required: true,
+    unique: false,
+  },
 });
 
 // Compile model from schema
