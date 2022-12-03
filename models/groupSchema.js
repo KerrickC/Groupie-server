@@ -9,8 +9,8 @@ const groupmodel = new Schema({
     required: true,
     unique: true,
   },
-  groupTopic: {
-    type: String,
+  tags: {
+    type: Array,
     required: true,
     unique: false,
   },
