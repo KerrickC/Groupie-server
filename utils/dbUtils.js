@@ -100,7 +100,7 @@ const deleteOne = async (Collection, query) => {
 /* Update one */
 const updateOne = async (Collection, filter, query) => {
   try {
-    for (i in query) {
+    for (let i in query) {
       const data = await Collection.updateOne(filter, {
         $set: { [i]: query[i] },
       });
