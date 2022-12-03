@@ -14,7 +14,6 @@ app.disable("x-powered-by");
 app.get("/getAllGroups", async (req, res) => {
   try {
     const data = await findAll(Group);
-    console.log(data);
 
     return res.send(data);
   } catch (e) {
@@ -25,7 +24,6 @@ app.get("/getAllGroups", async (req, res) => {
 app.post("/addGroup", async (req, res) => {
   try {
     const data = await insertOne(Group, req.body);
-    console.log(data);
 
     return res.send(data);
   } catch (e) {
@@ -33,12 +31,9 @@ app.post("/addGroup", async (req, res) => {
   }
 });
 
-app.delete("/deleteGroup", async (req, res) => {
+app.delete("/deleteGroup/:groupName", async (req, res) => {
   try {
-    deletedGroup = new Group(res.body);
-
-    const data = await deleteOne(newGroup);
-    console.log(data);
+    const data = await deleteOne(Group, { groupName: req.params.groupName });
 
     return res.send(data);
   } catch (e) {

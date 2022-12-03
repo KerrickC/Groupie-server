@@ -7,9 +7,7 @@ app.disable("x-powered-by");
 
 app.get("/getAllUsers", async (req, res) => {
   try {
-    console.log("getting all users");
     const data = await findAll(User);
-    console.log(data);
 
     return res.send(data);
   } catch (e) {
@@ -19,7 +17,6 @@ app.get("/getAllUsers", async (req, res) => {
 
 app.get("/getUserByEmail/:email", async (req, res) => {
   try {
-    console.log("getting all users");
     const data = await findOne(User, { email: req.params.email });
 
     return res.send(data);
@@ -30,10 +27,7 @@ app.get("/getUserByEmail/:email", async (req, res) => {
 
 app.post("/addUser", async (req, res) => {
   try {
-    console.log(req.body);
-
     const data = await insertOne(User, req.body);
-    console.log(data);
 
     return res.send(data);
   } catch (e) {
@@ -41,12 +35,9 @@ app.post("/addUser", async (req, res) => {
   }
 });
 
-app.delete("/deleteUser", async (req, res) => {
+app.delete("/deleteUser/:email", async (req, res) => {
   try {
-    deletedUser = new User(res.body);
-
-    const data = await deleteOne(newUser);
-    console.log(data);
+    const data = await deleteOne(User, { email: req.params.email });
 
     return res.send(data);
   } catch (e) {
