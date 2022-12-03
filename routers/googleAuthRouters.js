@@ -16,7 +16,7 @@ app.get(
     req.session.regenerate((err) => {
       // Compliant
       Object.assign(req.session, prevSession);
-      res.redirect("/");
+      res.redirect("/success");
     });
   }
 );
