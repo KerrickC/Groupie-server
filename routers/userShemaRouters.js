@@ -16,11 +16,11 @@ app.get("/getAllUsers", async (req, res) => {
   }
 });
 
-app.get("/getUserByUsername/:username", async (req, res) => {
+app.get("/getUserByEmail/:email", async (req, res) => {
   try {
     console.log("getting all users");
-    const data = await findOne(User, { username: req.params.username });
-    console.log(data);
+    const data = await findOne(User, { email: req.params.email });
+    // console.log(data);
 
     return res.send(data);
   } catch (e) {
@@ -30,9 +30,9 @@ app.get("/getUserByUsername/:username", async (req, res) => {
 
 app.post("/addUser", async (req, res) => {
   try {
-    newUser = new User(res.body);
+    // newUser = new User(res.body);
 
-    const data = await insertOne(newUser);
+    const data = await insertOne(User, req.body);
     console.log(data);
 
     return res.send(data);
