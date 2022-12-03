@@ -20,7 +20,6 @@ app.get("/getUserByEmail/:email", async (req, res) => {
   try {
     console.log("getting all users");
     const data = await findOne(User, { email: req.params.email });
-    // console.log(data);
 
     return res.send(data);
   } catch (e) {
@@ -30,7 +29,7 @@ app.get("/getUserByEmail/:email", async (req, res) => {
 
 app.post("/addUser", async (req, res) => {
   try {
-    // newUser = new User(res.body);
+    console.log(req.body);
 
     const data = await insertOne(User, req.body);
     console.log(data);

@@ -23,8 +23,6 @@ app.get("/getAllGroups", async (req, res) => {
 
 app.post("/addGroup", async (req, res) => {
   try {
-    // newGroup = new Group(res.body);
-
     const data = await insertOne(Group, req.body);
     console.log(data);
 
@@ -49,7 +47,6 @@ app.delete("/deleteGroup", async (req, res) => {
 
 app.put("/addUserToGroup/:groupName", async (req, res) => {
   try {
-    // deletedGroup = new Group(res.body);
     const groupName = req.params.groupName;
 
     const thisGroup = await findOne(Group, { groupName: groupName });
@@ -64,7 +61,6 @@ app.put("/addUserToGroup/:groupName", async (req, res) => {
       { groupName: groupName },
       { members: curMems }
     );
-    // console.log(data);
 
     return res.send(data);
   } catch (e) {

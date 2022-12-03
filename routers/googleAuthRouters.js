@@ -12,7 +12,12 @@ app.get(
   passport.authenticate("google", { failureRedirect: "/error" }),
   function (req, res) {
     // Successful authentication, redirect success.
-    res.redirect("/success");
+    let prevSession = req.session;
+    req.session.regenerate((err) => {
+      // Compliant
+      Object.assign(req.session, prevSession);
+      res.redirect("/");
+    });
   }
 );
 
