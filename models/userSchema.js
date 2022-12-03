@@ -9,11 +9,6 @@ const usermodel = new Schema({
     required: true,
     unique: true,
   },
-  userID: {
-    type: String,
-    required: true,
-    unique: true,
-  },
   ownedGroups: {
     type: Array,
     required: true,
@@ -21,6 +16,11 @@ const usermodel = new Schema({
   },
   memberGroups: {
     type: Array,
+    required: true,
+    unique: false,
+  },
+  verified: {
+    type: Boolean,
     required: true,
     unique: false,
   },

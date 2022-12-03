@@ -1,5 +1,5 @@
 const express = require("express");
-const { findAll, insertOne, deleteOne } = require("../utils/dbUtils");
+const { findAll, insertOne, deleteOne, findOne } = require("../utils/dbUtils");
 const User = require("../models/userSchema").UserModel;
 
 const app = express();
@@ -8,6 +8,18 @@ app.get("/getAllUsers", async (req, res) => {
   try {
     console.log("getting all users");
     const data = await findAll(User);
+    console.log(data);
+
+    return res.send(data);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+app.get("/getUserByUsername/:username", async (req, res) => {
+  try {
+    console.log("getting all users");
+    const data = await findOne(User, { username: req.params.username });
     console.log(data);
 
     return res.send(data);
