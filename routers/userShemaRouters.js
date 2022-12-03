@@ -16,7 +16,7 @@ app.get("/getAllUsers", async (req, res) => {
   }
 });
 
-app.get("/getUserByUsername/:username", async (req, res) => {
+app.post("/getUserByUsername/:username", async (req, res) => {
   try {
     console.log("getting all users");
     const data = await findOne(User, { username: req.params.username });
