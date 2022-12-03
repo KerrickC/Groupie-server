@@ -3,6 +3,7 @@ const { findAll, insertOne, deleteOne, findOne } = require("../utils/dbUtils");
 const User = require("../models/userSchema").UserModel;
 
 const app = express();
+app.disable("x-powered-by");
 
 app.get("/getAllUsers", async (req, res) => {
   try {

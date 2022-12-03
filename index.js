@@ -13,6 +13,7 @@ const authRouters = require("./routers/authRouters");
 const googleAuthRouters = require("./routers/googleAuthRouters");
 
 const app = express();
+app.disable("x-powered-by");
 
 require("./utils/dbUtils");
 

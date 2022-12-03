@@ -9,6 +9,7 @@ const {
 const Group = require("../models/groupSchema").GroupModel;
 
 const app = express();
+app.disable("x-powered-by");
 
 app.get("/getAllGroups", async (req, res) => {
   try {
