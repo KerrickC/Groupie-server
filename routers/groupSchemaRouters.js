@@ -1,5 +1,11 @@
 const express = require("express");
-const { findAll, insertOne, deleteOne } = require("../utils/dbUtils");
+const {
+  findAll,
+  insertOne,
+  deleteOne,
+  updateOne,
+  findOne,
+} = require("../utils/dbUtils");
 const Group = require("../models/groupSchema").GroupModel;
 
 const app = express();
@@ -34,6 +40,31 @@ app.delete("/deleteGroup", async (req, res) => {
 
     const data = await deleteOne(newGroup);
     console.log(data);
+
+    return res.send(data);
+  } catch (e) {
+    console.error(e);
+  }
+});
+
+app.put("/addUserToGroup/:groupName", async (req, res) => {
+  try {
+    // deletedGroup = new Group(res.body);
+    const groupName = req.params.groupName;
+
+    const thisGroup = await findOne(Group, { groupName: groupName });
+    const curMems = thisGroup.members;
+
+    const email = req.body.email;
+
+    curMems.push(email);
+
+    const data = await updateOne(
+      Group,
+      { groupName: groupName },
+      { members: curMems }
+    );
+    // console.log(data);
 
     return res.send(data);
   } catch (e) {
