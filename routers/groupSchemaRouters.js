@@ -46,7 +46,7 @@ app.put("/addUserToGroup/:groupName", async (req, res) => {
     const groupName = req.params.groupName;
 
     const thisGroup = await findOne(Group, { groupName: groupName });
-    const curMems = thisGroup.members;
+    const curMems = thisGroup.data.members;
 
     const email = req.body.email;
 
